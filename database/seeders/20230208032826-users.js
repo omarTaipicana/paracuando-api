@@ -28,6 +28,16 @@ module.exports = {
         password: hashPassword('12345678910'),
         created_at: new Date(),
         updated_at: new Date(),
+      },
+      {
+        id: uuid.v4(),
+        first_name: 'Omar',
+        last_name: 'Heredia',
+        email: 'omar@academlo.com',
+        username: 'omar@academlo.com',
+        password: hashPassword('12345678910'),
+        created_at: new Date(),
+        updated_at: new Date(),
       }
     ]
 
