@@ -31,8 +31,8 @@ module.exports = {
       },
       {
         id: uuid.v4(),
-        first_name: 'prueba',
-        last_name: 'prueba',
+        first_name: 'prueba123',
+        last_name: 'prueba123',
         email: 'angel@academlo.com',
         username: 'angel@academlo.com',
         password: hashPassword('12345678910'),
