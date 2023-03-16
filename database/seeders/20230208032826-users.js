@@ -45,7 +45,8 @@ module.exports = {
     const transaction = await queryInterface.sequelize.transaction()
 
     const userNames = [
-      'example@academlo.com',
+      'fernando@academlo.com',
+      'angel@academlo.com'      
     ]
 
     try {

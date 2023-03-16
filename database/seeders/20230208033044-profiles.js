@@ -13,8 +13,7 @@ module.exports = {
     try {
       const adminUser = await usersService.findUserByEmailOr404('fernando@academlo.com')
       const adminRole = await rolesService.findRoleByName('admin')
-      const adminUser1 = await usersService.findUserByEmailOr404('angel@academlo.com')
-      const adminRole1 = await rolesService.findRoleByName('admin')
+      const adminUser2 = await usersService.findUserByEmailOr404('angel@academlo.com')
       const profiles = [
         {
           user_id: adminUser.id,
@@ -23,8 +22,8 @@ module.exports = {
           updated_at: new Date(),
         },
         {
-          user_id: adminUser1.id,
-          role_id: adminRole1.id,
+          user_id: adminUser2.id,
+          role_id: adminRole.id,
           created_at: new Date(),
           updated_at: new Date(),
         }
