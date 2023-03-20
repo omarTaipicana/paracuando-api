@@ -1,0 +1,80 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+      "title": "paracuando_api - OpenAPI 3.0",
+      "description": "API DE PUBLICACIONES",
+      "termsOfService": "http://swagger.io/terms/",
+      "contact": {
+        "name": "Fernando - Angel",
+        "email": "fernandoparadoja@gmail.com"
+      },
+      "license": {
+        "name": "Apache 2.0",
+        "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+      },
+      "version": "1.0.11"
+    },
+    "externalDocs": {
+      "description": "Find out more about Swagger",
+      "url": "http://swagger.io"
+    },
+    "servers": [
+      {
+        "url": "http://localhost:8001/api/v1",
+        "description": "development server"
+      }
+    ],
+    "tags": [
+      {
+        "name": "auth",
+        "description": "Auth login",
+        "externalDocs": {
+          "description": "Find out more",
+          "url": "http://swagger.io"
+        }
+      }
+    ],
+    "paths": {
+      "/auth/login": {
+        "post": {
+          "tags": [
+            "auth"
+          ],
+          "summary": "Authenticate user",
+          "description": "Authenticate user",
+          "operationId": "Authenticate user",
+          "requestBody": {
+            "description": "user info to be filled",
+            "content": {
+              "application/x-www-form-urlencoded": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "email",
+                    "password"
+                  ],
+                  "properties": {
+                    "email": {
+                      "type": "string",
+                      "format": "email",
+                      "description": "user identity"
+                    },
+                    "password": {
+                      "type": "string",
+                      "format": "password",
+                      "description": "password"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Authenticated user"
+            }
+          }
+        }
+      }
+    }
+  }
