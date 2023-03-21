@@ -1,11 +1,9 @@
 const express = require('express')
-<<<<<<< HEAD
 const routesUsers = require('./users.routes')
-=======
+
 const swaggerUi = require("swagger-ui-express")
 const swagerDoc = require("../swaguer.json")
 // const routesUsers = require('./users.routes')
->>>>>>> 1eb7519eba31078c3767a66054323f9030b32153
 
 // const isAuthenticatedByPassportJwt = require('../libs/passport')
 
@@ -17,12 +15,9 @@ function routerModels(app) {
 
   app.use('/api/v1', router)
   router.use('/auth', routesAuth)
-<<<<<<< HEAD
 
-=======
   app.use("/api/v1/docs",swaggerUi.serve, swaggerUi.setup(swagerDoc))
   router.use('/users', routesUsers )
->>>>>>> 1eb7519eba31078c3767a66054323f9030b32153
 }
 
 module.exports = routerModels
