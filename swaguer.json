@@ -1,80 +1,254 @@
 {
-    "openapi": "3.0.3",
-    "info": {
-      "title": "paracuando_api - OpenAPI 3.0",
-      "description": "API DE PUBLICACIONES",
-      "termsOfService": "http://swagger.io/terms/",
-      "contact": {
-        "name": "Fernando - Angel",
-        "email": "fernandoparadoja@gmail.com"
-      },
-      "license": {
-        "name": "Apache 2.0",
-        "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
-      },
-      "version": "1.0.11"
+  "openapi": "3.0.3",
+  "info": {
+    "title": "paracuando_api - OpenAPI 3.0",
+    "description": "API DE PUBLICACIONES",
+    "termsOfService": "http://swagger.io/terms/",
+    "contact": {
+      "name": "Fernando - Angel",
+      "email": "fernandoparadoja@gmail.com"
     },
-    "externalDocs": {
-      "description": "Find out more about Swagger",
-      "url": "http://swagger.io"
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "servers": [
-      {
-        "url": "http://localhost:8001/api/v1",
-        "description": "development server"
+    "version": "1.0.11"
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8001/api/v1",
+      "description": "development server"
+    }
+  ],
+  "tags": [
+    {
+      "name": "auth",
+      "description": "Auth login",
+      "externalDocs": {
+        "description": "Find out more",
+        "url": "http://swagger.io"
       }
-    ],
-    "tags": [
-      {
-        "name": "auth",
-        "description": "Auth login",
-        "externalDocs": {
-          "description": "Find out more",
-          "url": "http://swagger.io"
+    }
+  ],
+  "paths": {
+    "/auth/me": {
+      "get": {
+        "tags": [
+          "auth"
+        ],
+        "summary": "Authenticate user",
+        "description": "Authenticate user",
+        "operationId": "verify",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "authenticated user"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
         }
       }
-    ],
-    "paths": {
-      "/auth/login": {
-        "post": {
-          "tags": [
-            "auth"
-          ],
-          "summary": "Authenticate user",
-          "description": "Authenticate user",
-          "operationId": "Authenticate user",
-          "requestBody": {
-            "description": "user info to be filled",
-            "content": {
-              "application/x-www-form-urlencoded": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "email",
-                    "password"
-                  ],
-                  "properties": {
-                    "email": {
-                      "type": "string",
-                      "format": "email",
-                      "description": "user identity"
-                    },
-                    "password": {
-                      "type": "string",
-                      "format": "password",
-                      "description": "password"
-                    }
+    },
+    "/auth/login": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "summary": "Authenticate user",
+        "description": "Authenticate user",
+        "operationId": "Authenticate user",
+        "requestBody": {
+          "description": "user info to be filled",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "email",
+                  "password"
+                ],
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "description": "user identity"
+                  },
+                  "password": {
+                    "type": "string",
+                    "format": "password",
+                    "description": "password"
                   }
                 }
               }
             }
-          },
-          "responses": {
-            "200": {
-              "description": "Authenticated user"
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "authenticated user"
+          }
+        }
+      }
+    },
+    "/auth/sign-up": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "summary": "Sign Up user",
+        "description": "Sign Up user",
+        "operationId": "Sign Up user",
+        "requestBody": {
+          "description": "User information to register",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "first_name",
+                  "last_name",
+                  "email",
+                  "password"
+                ],
+                "properties": {
+                  "first_name": {
+                    "type": "string",
+                    "description": "user identity"
+                  },
+                  "last_name": {
+                    "type": "string",
+                    "description": "user identity"
+                  },
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "description": "user identity"
+                  },
+                  "password": {
+                    "type": "string",
+                    "format": "password",
+                    "description": "password"
+                  }
+                }
+              }
             }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "authenticated user"
+          }
+        }
+      }
+    },
+    "/auth/forget-password": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "summary": "Set Token",
+        "description": "The user sets a token in the DB so that he can change his password.",
+        "operationId": "Set Token",
+        "requestBody": {
+          "description": "user info to be filled",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "email"
+                ],
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "description": "user identity"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "authenticated user"
+          }
+        }
+      }
+    },
+    "/auth/change-password/{token}": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "summary": "Change Password",
+        "description": "The token is sent along with the password for the password change to be made",
+        "operationId": "Change Password",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "path",
+            "description": "Token User",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "user info to be filled",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "password"
+                ],
+                "properties": {
+                  "password": {
+                    "type": "string",
+                    "format": "password",
+                    "description": "password"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "authenticated user"
           }
         }
       }
     }
-  }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    },
+    "responses": {
+      "UnauthorizedError": {
+        "description": "Access token is missing or invalid"
+      }
+    }
+  },
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ]
+}

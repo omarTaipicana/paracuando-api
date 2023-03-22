@@ -1,9 +1,10 @@
 const express = require('express')
 
 const routesUsers = require('./users.routes')
+
 const swaggerUi = require("swagger-ui-express")
 const swagerDoc = require("../swaguer.json")
-
+// const routesUsers = require('./users.routes')
 
 
 // const isAuthenticatedByPassportJwt = require('../libs/passport')
