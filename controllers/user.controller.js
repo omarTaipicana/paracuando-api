@@ -34,7 +34,7 @@ const addUser = async(request, response, next) => {
 const getUser = async(request, response, next) => {
     try {
         let { id } = request.params
-        let users = await usersService.getUserOr404(id)
+        let users = await usersService.getUser(id)
         return response.json({results: users})
     } catch (error) {
         next(error)

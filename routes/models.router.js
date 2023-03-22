@@ -19,7 +19,7 @@ function routerModels(app) {
   router.use('/auth', routesAuth)
 
   app.use("/api/v1/docs",swaggerUi.serve, swaggerUi.setup(swagerDoc))
-  router.use('/users', routesUsers )
+  router.use('/users',  routesUsers )
 }
 
 module.exports = routerModels
