@@ -26,6 +26,13 @@ class ProfilesService {
     if (!profile) throw new CustomError('Not found profile', 404, 'Not Found')
     return profile
   }
+  async isAdminOr403(user_id){
+    let adminRole = await models.Roles.findOne({ where: { name: "admin"}, attributes: ['id', 'name']}, {raw: true})
+    if (!adminRole) throw new CustomError('Missing record in DB', 500, 'Not Found Core Record (Role)')
+    let profile = await models.Profiles.findOne({ where: {user_id, role_id: adminRole.id}})
+    if (!profile) throw new CustomError('User does not have admin role', 403, 'Permissions Denied')
+    return profile
+  }
 
 
 }
