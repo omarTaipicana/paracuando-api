@@ -335,6 +335,161 @@
           }
         }
       }
+    },
+    "/users/{userID}/add-image": {
+      "post": {
+        "tags": [
+          "users"
+        ],
+        "summary": "Add image in the user for ID",
+        "description": "Add image in their fields",
+        "operationId": "Add image in User for ID",
+        "parameters": [
+          {
+            "name": "userID",
+            "in": "path",
+            "description": "Id of the user to return",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "user info to be filled",
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "image": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "format": "binary"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "succesfull operation"
+          }
+        }
+      }
+    },
+    "/users/{userID}/remove-image": {
+      "delete": {
+        "tags": [
+          "users"
+        ],
+        "summary": "Remove image in the user for ID",
+        "description": "Add image in their fields",
+        "operationId": "delete image in User for ID",
+        "parameters": [
+          {
+            "name": "userID",
+            "in": "path",
+            "description": "Id of the user to return",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "succesfull operation"
+          }
+        }
+      }
+    },
+    "/users/{userID}/votes": {
+      "get": {
+        "tags": [
+          "users"
+        ],
+        "summary": "Return posts where the user voted",
+        "description": "Return posts where the user voted",
+        "operationId": "Returns posts",
+        "parameters": [
+          {
+            "name": "userID",
+            "in": "path",
+            "description": "Id of the user to return",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Paginacion que se mostrara",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "Registrot a devolver",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "succesfull operation"
+          }
+        }
+      }
+    },
+    "/users/{userID}/publications": {
+      "get": {
+        "tags": [
+          "users"
+        ],
+        "summary": "Return posts where the user created",
+        "description": "Return posts where the user created",
+        "operationId": "Return posts where the user created",
+        "parameters": [
+          {
+            "name": "userID",
+            "in": "path",
+            "description": "Id of the user to return",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Paginacion que se mostrara",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "Registrot a devolver",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "succesfull operation"
+          }
+        }
+      }
     }
   },
   "components": {
