@@ -6,6 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   class Countries extends Model {
     static associate(models) {
       Countries.hasMany(models.Users, { as: 'users', foreignKey: 'country_id' })
+      Countries.hasMany(models.State, { as: 'state', foreignKey: 'country_id' })
       // Countries.hasMany(models.States, { as: 'states', foreignKey: 'country_id' })
     }
   }
