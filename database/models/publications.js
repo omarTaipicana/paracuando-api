@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       Publications.belongsTo(models.Users, { as: 'users', foreignKey: 'user_id' })
       Publications.belongsTo(models.PublicationTypes, { as: 'publication_types', foreignKey: 'publication_type_id' })
       Publications.belongsTo(models.Cities, { as: 'cities', foreignKey: 'city_id' })
-      Publications.hasMany(models.PublicationImages, { as: 'PublicationImages', foreignKey: 'publication_id' })
+      Publications.hasMany(models.PublicationsImages, { as: 'PublicationsImages', foreignKey: 'publication_id' })
       Publications.hasMany(models.Votes, { as: 'votes', foreignKey: 'publication_id' })
       Publications.hasMany(models.PublicationsTags, { as: 'publications_tags', foreignKey: 'publication_id' })
 
@@ -41,10 +41,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING
     },
     content: {
-      dtype: DataTypes.TEXT
+      type: DataTypes.TEXT
     },
     reference_link: {
-      dtype: DataTypes.TEXT
+      type: DataTypes.TEXT
     }
   }, {
     sequelize,

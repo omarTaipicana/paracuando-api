@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
   PublicationsImages.init({
     publication_id: DataTypes.UUID,
     image_url: DataTypes.TEXT,
-    order: DataTypes.INTEG
+    order: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'PublicationsImages',
