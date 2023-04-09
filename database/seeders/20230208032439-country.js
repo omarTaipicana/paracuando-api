@@ -16,6 +16,24 @@ module.exports = {
           name: 'Ecuador',
           created_at: new Date(),
           updated_at: new Date()
+        },
+        {
+          id: '2',
+          name: 'Peru',
+          created_at: new Date(),
+          updated_at: new Date()
+        },
+        {
+          id: '3',
+          name: 'Chile',
+          created_at: new Date(),
+          updated_at: new Date()
+        },
+        {
+          id: '4',
+          name: 'Chile',
+          created_at: new Date(),
+          updated_at: new Date()
         }
       ], { transaction })
 

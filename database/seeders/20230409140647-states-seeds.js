@@ -1,28 +1,28 @@
 "use strict";
 const { Op } = require("sequelize");
-
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
     const transaction = await queryInterface.sequelize.transaction();
-    const citiesSeeds = [
+
+    const stateSeeds = [
       {
         id: "1",
-        state_id: "2",
-        name: "Los Olivos",
+        country_id: "1",
+        name: "Quito",
         created_at: new Date(),
         updated_at: new Date(),
       },
       {
         id: "2",
-        state_id: "1",
-        name: "Guayas",
+        country_id: "2",
+        name: "Lima",
         created_at: new Date(),
         updated_at: new Date(),
       },
     ];
     try {
-      await queryInterface.bulkInsert("cities", citiesSeeds, { transaction });
+      await queryInterface.bulkInsert("states", stateSeeds, { transaction });
 
       await transaction.commit();
     } catch (error) {
@@ -33,13 +33,13 @@ module.exports = {
 
   async down(queryInterface, Sequelize) {
     const transaction = await queryInterface.sequelize.transaction();
-    const citiName = ["Lomas de Sargentillo"];
+    const stateName = ["District of a city"];
     try {
       await queryInterface.bulkDelete(
-        "cities",
+        "states",
         {
           username: {
-            [Op.or]: citiName,
+            [Op.or]: stateName,
           },
         },
         { transaction }

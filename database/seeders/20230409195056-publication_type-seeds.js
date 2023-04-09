@@ -1,28 +1,23 @@
-"use strict";
-const { Op } = require("sequelize");
+'use strict';
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up(queryInterface, Sequelize) {
+  async up (queryInterface, Sequelize) {
     const transaction = await queryInterface.sequelize.transaction();
-    const citiesSeeds = [
+    const publicationTypeSeeds = [
       {
-        id: "1",
-        state_id: "2",
-        name: "Los Olivos",
-        created_at: new Date(),
-        updated_at: new Date(),
+        id: '1',
+        name: 'Marcas y tiendas',
+        description: 'Productos de tienda por departamentos'
       },
       {
-        id: "2",
-        state_id: "1",
-        name: "Guayas",
-        created_at: new Date(),
-        updated_at: new Date(),
+        id: '2',
+        name: 'Artistas y conciertos',
+        description: 'Cantante o grupo favorito'
       },
-    ];
+    ]
     try {
-      await queryInterface.bulkInsert("cities", citiesSeeds, { transaction });
+      await queryInterface.bulkInsert("publication_types", publicationTypeSeeds, { transaction });
 
       await transaction.commit();
     } catch (error) {
@@ -31,15 +26,15 @@ module.exports = {
     }
   },
 
-  async down(queryInterface, Sequelize) {
+  async down (queryInterface, Sequelize) {
     const transaction = await queryInterface.sequelize.transaction();
-    const citiName = ["Lomas de Sargentillo"];
+    const typeName = ["Aqui va el tipo de publicacion"];
     try {
       await queryInterface.bulkDelete(
-        "cities",
+        "publication_types",
         {
           username: {
-            [Op.or]: citiName,
+            [Op.or]: typeName,
           },
         },
         { transaction }
@@ -50,5 +45,5 @@ module.exports = {
       await transaction.rollback();
       throw error;
     }
-  },
+  }
 };
